@@ -8,9 +8,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+const allowedOrigins = ['https://budgettracker-brown.vercel.app'];
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true, // optional, if you use cookies or auth headers
+}));
 app.use(express.json());
 
 // Routes
